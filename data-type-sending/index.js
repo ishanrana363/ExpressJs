@@ -10,6 +10,10 @@ app.get("/api/user",(req,res)=>{
         home : "Dinajpur"
     };
     res.json(user)
+});
+
+app.get("/html",(req,res)=>{
+    res.send("<h1>Hello programmer</h1>")
 })
 
 
