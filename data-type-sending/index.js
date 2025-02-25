@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require("path");
 
 const app = new express();
 
@@ -14,6 +15,12 @@ app.get("/api/user",(req,res)=>{
 
 app.get("/html",(req,res)=>{
     res.send("<h1>Hello programmer</h1>")
+});
+
+
+app.get("/html-file",(req,res)=>{
+    const filePath = path.join(process.cwd(),"public", "example.html");
+    res.send(filePath)
 })
 
 
