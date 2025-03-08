@@ -10,11 +10,31 @@
 <body>
     <h1>file upload</h1>
     <form action="/upload" enctype="multipart/form-data" method="post">
-        <div class="form-group">
+        <div id="imagesUpload" class="form-group">
             <input type="file" class="form-control-file" name="image">
             <input type="submit" value="Get me the stats!" class="btn btn-default">
         </div>
     </form>
+    <img src="" alt="upload image" id="imgData">
+    <script>
+        document.getElementById("imagesUpload").addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const response = await fetch("/upload", {
+                method: "post",
+                body: formData
+            });
+            const data = await response.json();
+            console.log(data)
+
+
+            if (data.file) {
+                document.getElementById("imgData").src(`/uploads/${data.file}`)
+            }
+
+
+        })
+    </script>
 </body>
 
 </html>
