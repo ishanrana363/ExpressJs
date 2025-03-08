@@ -11,6 +11,7 @@
   "type": "commonjs",
   "description": "",
   "dependencies": {
+    "compression": "^1.8.0",
     "express": "^4.21.2",
     "node-cache": "^5.1.2"
   }

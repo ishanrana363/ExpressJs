@@ -1,6 +1,10 @@
 const express = require("express");
 const port = 3000;
 const app = new express();
+const compression = require('compression');
+
+app.use(compression())
+
 
 const NodeCache = require("node-cache");
 const myCache = new NodeCache({ stdTTL: 100, checkperiod: 120 });
@@ -32,6 +36,15 @@ app.get("/users",catchMiddleware,(req,res)=>{
     myCache.set(req.originalUrl,user,1000)
     res.json(user)
 });
+
+app.get("/compression",(req,res)=>{
+    const data = "This compression response";
+    res.json({
+        message : data.repeat(1000)
+    })
+})
+
+
 
 
 
